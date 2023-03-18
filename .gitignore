@@ -1,0 +1,8 @@
+*.sh
+*.pkl
+*.out
+*.err
+*.pyc
+*.idea
+.DS_Store
+output
