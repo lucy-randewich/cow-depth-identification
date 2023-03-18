@@ -120,7 +120,7 @@ if __name__ == '__main__':
 						help="Number of folds to cross validate across")
 	parser.add_argument('--fold_number', type=int, default=0,
 						help="The fold number to START at")
-	parser.add_argument('--dataset', type=str, default='OpenSetCows2020',
+	parser.add_argument('--dataset', type=str, default='SixteenBitCows',
 						help='Which dataset to use')
 	parser.add_argument('--model', type=str, default='TripletResnetSoftmax',
 						help='Which model to use: [TripletResnetSoftmax, TripletResnet]')

@@ -129,7 +129,7 @@ if __name__ == '__main__':
 	parser.add_argument('--save_path', type=str, required=True,
 						help="Where to store the embeddings")
 
-	parser.add_argument('--dataset', nargs='?', type=str, default='OpenSetCows2020', 
+	parser.add_argument('--dataset', nargs='?', type=str, default='SixteenBitCows',
 						help='Which dataset to use')
 	parser.add_argument('--batch_size', nargs='?', type=int, default=16,
 						help='Batch Size')

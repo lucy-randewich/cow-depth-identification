@@ -17,7 +17,6 @@ from utilities.mining_utils import *
 from models.TripletResnet import TripletResnet50
 from models.TripletResnetSoftmax import TripletResnet50Softmax
 from datasets.OpenSetCows2020.OpenSetCows2020 import OpenSetCows2020
-from datasets.RGBDCows202066.ThreeStreamRGBD import ThreeStreamRGBD
 from datasets.RGBDCows202066.RGBDCows202066 import RGBDCows202066
 from datasets.SixteenBitCows.SixteenBitCows import SixteenBitCows
 
@@ -187,13 +186,6 @@ class Utilities:
                                         transform=True,
                                         combine=True,
                                         suppress_info=False )
-        elif args.dataset == "ThreeStreamRGBD":
-            dataset = ThreeStreamRGBD(args.current_fold,
-                                      args.folds_file,
-                                      split=split,
-                                      transform=True,
-                                      combine=True,
-                                      suppress_info=False)
         elif args.dataset == "RGBDCows202066":
             dataset = RGBDCows202066(args.current_fold,
                                       args.folds_file,
