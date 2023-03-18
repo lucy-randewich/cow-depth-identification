@@ -4,7 +4,7 @@ This repository contains the code accompanying my thesis "Recognition of Individ
 
 The implemention is built directly upon the framework given alongside Andrew, W. et al's work, "Visual Identification of Individual Holstein-Friesian Cattle via Deep Metric Learning", published in 2020 [source code](https://github.com/CWOA/MetricLearningIdentification) [paper](https://arxiv.org/abs/2006.09205).
 
-This project presents a solution to identification of cattle via depth imagery alone, paving the way for robust automated individual classification irrespective of cattle's coat patterns. The proposed network architecture is shown below. ![Network architecture](https://github.com/lucy-randewich/cow-depth-identification/network-flowchart.png)
+This project presents a solution to identification of cattle via depth imagery alone, paving the way for robust automated individual classification irrespective of cattle's coat patterns. The proposed network architecture is shown below. ![Network architecture](network-flowchart.png)
 
 ### Installation
 
