@@ -16,6 +16,7 @@ from utilities.loss import *
 from utilities.mining_utils import *
 from models.TripletResnet import TripletResnet50
 from models.TripletResnetSoftmax import TripletResnet50Softmax
+from models.TripletResnetSoftmaxSCM import TripletResnet50SoftmaxSCM
 from datasets.OpenSetCows2020.OpenSetCows2020 import OpenSetCows2020
 from datasets.RGBDCows202066.RGBDCows202066 import RGBDCows202066
 from datasets.SixteenBitCows.SixteenBitCows import SixteenBitCows
@@ -54,6 +55,8 @@ class Utilities:
             model = TripletResnet50Softmax(pretrained=True, num_classes=dataset.getNumClasses())
         elif args.model == "TripletResnet": 
             model = TripletResnet50(pretrained=True, num_classes=dataset.getNumClasses())
+        elif args.model == "TripletResnetSoftmaxSCM":
+            model = TripletResnet50SoftmaxSCM(pretrained=True, num_classes=dataset.getNumClasses())
         else:
             print(f"Model choice: \"{args.model}\" not recognised, exiting.")
             sys.exit(1)

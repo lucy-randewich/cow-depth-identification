@@ -2,6 +2,7 @@
 import torch
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
+from models.context_block import SpatialContextBlock2d
 
 model_urls = {
     'resnet18': 'https://download.pytorch.org/models/resnet18-5c106cde.pth',
@@ -98,6 +99,8 @@ class Triplet_ResNet_Softmax(nn.Module):
         self.layer4 = self._make_layer(block, 512, layers[3], stride=2)
         self.avgpool = nn.AvgPool2d(7, stride=1)
 
+        self.attention = SpatialContextBlock2d(inplanes=self.inplanes, planes=64, pool='avg', fusions=['channel_add'])
+
         self.fc = nn.Linear(512 * block.expansion, 1000)
         self.fc_softmax = nn.Linear(512 * block.expansion, 1000)
         self.fc_embedding = nn.Linear(512 * block.expansion, 1000)
@@ -139,6 +142,8 @@ class Triplet_ResNet_Softmax(nn.Module):
 
         x = self.avgpool(x)
 
+        x = self.attention(x)
+
         x = x.view(x.size(0), -1)
 
         x = self.fc(x)
@@ -157,7 +162,7 @@ class Triplet_ResNet_Softmax(nn.Module):
         return embedding_vec_1, embedding_vec_2, embedding_vec_3, torch.cat((softmax_vec_1, softmax_vec_2, softmax_vec_3), 0)
 
 # Construct resnet50 model, if pretrained (bool) returns a model pre-trained on imagenet
-def TripletResnet50Softmax(pretrained=False,  num_classes=50, embedding_size=128, **kwargs):
+def TripletResnet50SoftmaxSCM(pretrained=False,  num_classes=50, embedding_size=128, **kwargs):
     model = Triplet_ResNet_Softmax(Bottleneck, [3, 4, 6, 3], num_classes=num_classes, **kwargs)
 
     if pretrained:

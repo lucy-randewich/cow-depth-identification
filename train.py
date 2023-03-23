@@ -123,7 +123,7 @@ if __name__ == '__main__':
 	parser.add_argument('--dataset', type=str, default='SixteenBitCows',
 						help='Which dataset to use')
 	parser.add_argument('--model', type=str, default='TripletResnetSoftmax',
-						help='Which model to use: [TripletResnetSoftmax, TripletResnet]')
+						help='Which model to use: [TripletResnetSoftmax, TripletResnet, TripletResnetSoftmaxSCM]')
 	parser.add_argument('--triplet_selection', type=str, default='HardestNegative',
 						help='Which triplet selection method to use: [HardestNegative, RandomNegative,\
 						SemihardNegative, AllTriplets]')
