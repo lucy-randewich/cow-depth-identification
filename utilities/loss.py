@@ -102,16 +102,23 @@ class OnlineTripletSoftmaxLoss(nn.Module):
 
 		# There might be no triplets selected, if so, just compute the loss over the entire
 		# minibatch
+
+		cos = nn.CosineSimilarity(dim=1, eps=1e-6)
+
 		if num_triplets == 0:
-			ap_distances = (anchor_embed - pos_embed).pow(2).sum(1)
-			an_distances = (anchor_embed - neg_embed).pow(2).sum(1)
+			# ap_distances = (anchor_embed - pos_embed).pow(2).sum(1)
+			# an_distances = (anchor_embed - neg_embed).pow(2).sum(1)
+			ap_distances = cos(anchor_embed, pos_embed)
+			an_distances = cos(anchor_embed, neg_embed)
 		else:
 			# Use CUDA if we can
 			if anchor_embed.is_cuda: triplets = triplets.cuda()
 
 			# Compute triplet loss over the selected triplets
-			ap_distances = (embeddings[triplets[:, 0]] - embeddings[triplets[:, 1]]).pow(2).sum(1)
-			an_distances = (embeddings[triplets[:, 0]] - embeddings[triplets[:, 2]]).pow(2).sum(1)
+			# ap_distances = (embeddings[triplets[:, 0]] - embeddings[triplets[:, 1]]).pow(2).sum(1)
+			# an_distances = (embeddings[triplets[:, 0]] - embeddings[triplets[:, 2]]).pow(2).sum(1)
+			ap_distances = cos(anchor_embed, pos_embed)
+			an_distances = cos(anchor_embed, neg_embed)
 		
 		# Compute the triplet losses
 		triplet_losses = F.relu(ap_distances - an_distances + self.margin)
