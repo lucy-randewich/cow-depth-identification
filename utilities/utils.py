@@ -88,6 +88,8 @@ class Utilities:
             loss_fn = OnlineTripletLoss(triplet_selector, margin=args.triplet_margin)
         elif args.loss_function == "OnlineTripletSoftmaxLoss":
             loss_fn = OnlineTripletSoftmaxLoss(triplet_selector, margin=args.triplet_margin)
+        elif args.loss_function == "OnlineTripletSoftmaxLossCosine":
+            loss_fn = OnlineTripletSoftmaxLossCosine(triplet_selector, margin=args.triplet_margin)
         elif args.loss_function == "OnlineReciprocalTripletLoss":
             loss_fn = OnlineReciprocalTripletLoss(triplet_selector)
         elif args.loss_function == "OnlineReciprocalSoftmaxLoss":
