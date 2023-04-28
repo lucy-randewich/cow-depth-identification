@@ -2,9 +2,11 @@
 
 This repository contains the code accompanying my thesis "Recognition of Individual Cattle from Depth Imagery Using Deep Metric Learning". 
 
-The implemention is built directly upon the framework given alongside Andrew, W. et al's work, "Visual Identification of Individual Holstein-Friesian Cattle via Deep Metric Learning", published in 2020 [source code](https://github.com/CWOA/MetricLearningIdentification) [paper](https://arxiv.org/abs/2006.09205).
+The implementation is built directly upon the framework given alongside Andrew, W. et al's work, "Visual Identification of Individual Holstein-Friesian Cattle via Deep Metric Learning", published in 2020 [source code](https://github.com/CWOA/MetricLearningIdentification) [paper](https://arxiv.org/abs/2006.09205).
 
-This project presents a solution to identification of cattle via depth imagery alone, paving the way for robust automated individual classification irrespective of cattle's coat patterns. The proposed network architecture is shown below. ![Network architecture](network-flowchart.png)
+This project presents a solution to identification of cattle via depth imagery alone, paving the way for robust automated individual classification irrespective of cattle's coat patterns. The proposed network architecture is shown below.
+
+![Network architecture](network-flowchart.png)
 
 ### Installation
 
@@ -15,7 +17,7 @@ install any missing requirements via `pip` or `conda`: [numpy](https://pypi.org/
 
 Dataset loaders are provided for the publicly available OpenCows2020 RGB dataset at: [https://data.bris.ac.uk/data/dataset/10m32xl88x2b61zlkkgz3fml17](https://data.bris.ac.uk/data/dataset/10m32xl88x2b61zlkkgz3fml17), and for both of the depth datasets experimented on in the paper, described in chapter 3. These sets are not currently publically available, but could be provided for replication of the paper's results upon request.
 
-An example command for model training is as follows: `python train.py --out_path=output/ --dataset=SixteenBitCows --folds_file=datasets/SixteenBitCows/splits/10-90.json --loss_function=OnlineTripletSoftmaxLoss`, where `python train.py -h` gives explanation of command-line arguments. 
+An example command for model training is as follows: `python train.py --out_path=output/ --dataset=CowDepth2023 --folds_file=datasets/CowDepth2023/splits/10-90.json --loss_function=OnlineTripletSoftmaxLoss`, where `python train.py -h` gives explanation of command-line arguments. 
 
 
 ### Citation
